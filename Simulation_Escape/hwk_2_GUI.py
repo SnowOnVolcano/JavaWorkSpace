@@ -4,19 +4,19 @@ import numpy as np
 
 
 def start_x(mid_x):
-    return (mid_x - r)
+    return mid_x - r
 
 
 def start_y(mid_y):
-    return (mid_y + r)
+    return mid_y + r
 
 
 def end_x(mid_x):
-    return (mid_x + r)
+    return mid_x + r
 
 
 def end_y(mid_y):
-    return (mid_y - r)
+    return mid_y - r
 
 
 def move_x(end_x, begin_x):
@@ -27,18 +27,18 @@ def move_y(end_y, begin_y):
     return end_y - begin_y
 
 
+THICKNESS = 0.5  # 墙的厚度
 HUMAN_SUM = 100  # 总人数
-THICKNESS = 0.48  # 墻的厚度
-WALL_WAST_X = 3.66  # 西侧墙的横坐标
-WALL_EAST_X = 11.96  # 东侧墙的横坐标
-WALL_SOUTH_Y = 3.689  # 南侧墙的纵坐标
-WALL_NORTH_Y = 9.977  # 北侧墙的纵坐标
-DOOR_SOUTH_Y = 6.3375  # 门南侧的纵坐标
-DOOR_NORTH_Y = 7.3375  # 门北侧的纵坐标
-BARRIER_WEST_X = 7.308  # 障碍物西的横坐标
-BARRIER_EAST_X = 8.478  # 障碍物东的横坐标
-BARRIER_SOUTH_Y = 4.909  # 障碍物南的纵坐标
-BARRIER_NORTH_Y = 9.481  # 障碍物北的纵坐标
+WALL_WAST_X = 4  # 西侧墙的横坐标
+WALL_EAST_X = 12  # 东侧墙的横坐标
+WALL_SOUTH_Y = 4  # 南侧墙的纵坐标
+WALL_NORTH_Y = 10  # 北侧墙的纵坐标
+DOOR_SOUTH_Y = 6.5  # 门南侧的纵坐标
+DOOR_NORTH_Y = 7.5  # 门北侧的纵坐标
+BARRIER_WEST_X = 7  # 障碍物西的横坐标
+BARRIER_EAST_X = 8  # 障碍物东的横坐标
+BARRIER_SOUTH_Y = 5  # 障碍物南的纵坐标
+BARRIER_NORTH_Y = 9  # 障碍物北的纵坐标
 
 # 创建窗口
 root = Tk()
