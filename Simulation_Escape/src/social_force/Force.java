@@ -1,22 +1,22 @@
 package social_force;
 
-public class Force {
-	public double Force_scale;
-	public Direction Fdir;
+class Force {
+	double Force_scale;
+	Direction Fdir;
 	
 	//给定x，y轴分力，实例化一个力
-	public Force(double X_f, double Y_f) {
+	Force(double X_f, double Y_f) {
 		Force_scale = Math.sqrt(X_f*X_f+Y_f*Y_f);
 		Fdir = new Direction();
 		Fdir.x_dir = X_f/Force_scale;
 		Fdir.y_dir = Y_f/Force_scale;
 	}
-	public Force() {
+	Force() {
 		Fdir = new Direction();
 	}
 	
 	//人与人之间的作用力
-	public static Force getForce_h2h(Human A, Human B) {
+	static Force getForce_h2h(Human A, Human B) {
 		
 		//计算法向作用力
 		Force Fn = new Force();
@@ -36,7 +36,7 @@ public class Force {
 	}
 	
 	//人与墙之间的作用力
-	public static Force getForce_h2w(Human H, Wall W) {
+	static Force getForce_h2w(Human H, Wall W) {
 		
 		//计算法向作用力
 		Force Fn = new Force();
@@ -60,7 +60,7 @@ public class Force {
 	}
 	
 	//力的合成
-	public static Force MergeForce(Force F1, Force F2) {
+	static Force MergeForce(Force F1, Force F2) {
 		Force F = new Force();
 		double Fx = F1.Force_scale*F1.Fdir.x_dir+F2.Force_scale*F2.Fdir.x_dir;
 		double Fy = F1.Force_scale*F1.Fdir.y_dir+F2.Force_scale*F2.Fdir.y_dir;
