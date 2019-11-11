@@ -5,12 +5,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hwk_2_GUI.py" beforeDir="false" afterPath="$PROJECT_DIR$/hwk_2_GUI.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Simulation_Escape/social_force/Location.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Simulation_Escape/social_force/Location.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Simulation_Escape/social_force/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Simulation_Escape/social_force/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Simulation_Escape/social_force/Wall.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Simulation_Escape/social_force/Wall.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/social_force/Location.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/social_force/Location.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/social_force/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/social_force/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/social_force/Wall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/social_force/Wall.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -98,7 +94,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>

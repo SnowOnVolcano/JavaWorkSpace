@@ -35,10 +35,10 @@ WALL_SOUTH_Y = 3.689  # 南侧墙的纵坐标
 WALL_NORTH_Y = 9.977  # 北侧墙的纵坐标
 DOOR_SOUTH_Y = 6.3375  # 门南侧的纵坐标
 DOOR_NORTH_Y = 7.3375  # 门北侧的纵坐标
-BARRIER_WEST_X = 9.308  # 西侧墙的横坐标
-BARRIER_EAST_X = 10.478  # 东侧墙的横坐标
-BARRIER_SOUTH_Y = 6.909  # 南侧墙的纵坐标
-BARRIER_NORTH_Y = 7.481  # 北侧墙的纵坐标
+BARRIER_WEST_X = 7.308  # 障碍物西的横坐标
+BARRIER_EAST_X = 8.478  # 障碍物东的横坐标
+BARRIER_SOUTH_Y = 4.909  # 障碍物南的纵坐标
+BARRIER_NORTH_Y = 9.481  # 障碍物北的纵坐标
 
 # 创建窗口
 root = Tk()
@@ -55,11 +55,16 @@ r = 5
 
 canvas.create_rectangle(BARRIER_WEST_X * ratio, BARRIER_NORTH_Y * ratio, BARRIER_EAST_X * ratio,
                         BARRIER_SOUTH_Y * ratio, fill='black')
-canvas.create_rectangle((WALL_WAST_X - THICKNESS) * ratio, (WALL_NORTH_Y + THICKNESS) * ratio, WALL_WAST_X * ratio, (WALL_SOUTH_Y - THICKNESS) * ratio, fill='black')
-canvas.create_rectangle((WALL_WAST_X - THICKNESS) * ratio, (WALL_NORTH_Y + THICKNESS) * ratio, (WALL_EAST_X + THICKNESS) * ratio, WALL_NORTH_Y * ratio, fill='black')
-canvas.create_rectangle(WALL_EAST_X * ratio, WALL_NORTH_Y * ratio, (WALL_EAST_X + THICKNESS) * ratio, DOOR_NORTH_Y * ratio, fill='black')
-canvas.create_rectangle(WALL_EAST_X * ratio, DOOR_SOUTH_Y * ratio, (WALL_EAST_X + THICKNESS) * ratio, (WALL_SOUTH_Y - THICKNESS) * ratio, fill='black')
-canvas.create_rectangle((WALL_WAST_X - THICKNESS) * ratio, WALL_SOUTH_Y * ratio, (WALL_EAST_X + THICKNESS) * ratio, (WALL_SOUTH_Y - THICKNESS) * ratio, fill='black')
+canvas.create_rectangle((WALL_WAST_X - THICKNESS) * ratio, (WALL_NORTH_Y + THICKNESS) * ratio, WALL_WAST_X * ratio,
+                        (WALL_SOUTH_Y - THICKNESS) * ratio, fill='black')
+canvas.create_rectangle((WALL_WAST_X - THICKNESS) * ratio, (WALL_NORTH_Y + THICKNESS) * ratio,
+                        (WALL_EAST_X + THICKNESS) * ratio, WALL_NORTH_Y * ratio, fill='black')
+canvas.create_rectangle(WALL_EAST_X * ratio, WALL_NORTH_Y * ratio, (WALL_EAST_X + THICKNESS) * ratio,
+                        DOOR_NORTH_Y * ratio, fill='black')
+canvas.create_rectangle(WALL_EAST_X * ratio, DOOR_SOUTH_Y * ratio, (WALL_EAST_X + THICKNESS) * ratio,
+                        (WALL_SOUTH_Y - THICKNESS) * ratio, fill='black')
+canvas.create_rectangle((WALL_WAST_X - THICKNESS) * ratio, WALL_SOUTH_Y * ratio, (WALL_EAST_X + THICKNESS) * ratio,
+                        (WALL_SOUTH_Y - THICKNESS) * ratio, fill='black')
 
 canvas.pack()
 
