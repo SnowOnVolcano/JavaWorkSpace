@@ -1,5 +1,6 @@
 package social_force;
 
+import java.lang.invoke.MutableCallSite;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Random;
@@ -10,19 +11,26 @@ class Location {
     double y_loc;
 
     //放大的倍率
-    private double MULTIPLE = 0.026;
+    double MULTIPLE = 0.026;
 
     //存储bfs的起步方向
-    private Direction_4D dir;
-    private static Random rand = new Random(342);
+    Direction_4D dir;
+    static Random rand = new Random(342);
 
     //随机在有效位置内生成随机点
     Location() {
-        int x_ceil = rand.nextInt(320) + 140; //140~460
-        int y_ceil = rand.nextInt(242) + 141; //141~383
-        while (x_ceil >= 358 && x_ceil <= 403 && y_ceil >= 265 && y_ceil <= 287) {
-            x_ceil = rand.nextInt(320) + 140;
-            y_ceil = rand.nextInt(242) + 141;
+        int x_min = (int) (Main.WALL_WAST_X / MULTIPLE);
+        int x_max = (int) (Main.WALL_EAST_X / MULTIPLE);
+        int y_min = (int) (Main.WALL_SOUTH_Y / MULTIPLE);
+        int y_max = (int) (Main.WALL_NORTH_Y / MULTIPLE);
+
+        int y_ceil = rand.nextInt(y_max - y_min) + y_min;
+        int x_ceil = rand.nextInt(x_max - x_min) + x_min;
+
+        while (x_ceil * MULTIPLE >= Main.BARRIER_WEST_X && x_ceil * MULTIPLE <= Main.BARRIER_EAST_X
+                && y_ceil * MULTIPLE >= Main.BARRIER_SOUTH_Y && y_ceil * MULTIPLE <= Main.BARRIER_NORTH_Y) {
+            x_ceil = rand.nextInt(x_max - x_min) + x_min;
+            y_ceil = rand.nextInt(y_max - y_min) + y_min;
         }
         x_loc = x_ceil * MULTIPLE;
         y_loc = y_ceil * MULTIPLE;
@@ -96,13 +104,13 @@ class Location {
             if (Vis[((int) Math.round(point_1.y_loc / MULTIPLE)) * width + (int) Math.round(point_1.x_loc / MULTIPLE)])
                 ;
             else {
-                if (point_1.x_loc <= 3.666 || point_1.y_loc >= 9.958 || point_1.y_loc <= 3.692)
+                if (point_1.x_loc <= Main.WALL_WAST_X || point_1.y_loc >= Main.WALL_NORTH_Y || point_1.y_loc <= Main.WALL_SOUTH_Y)
                     ;
-                else if (point_1.x_loc >= Main.BARRIER_WEST_X && point_1.x_loc <= Main.BARRIER_EAST_X && point_1.y_loc >= 6.89 && point_1.y_loc <= 7.488)
+                else if (point_1.x_loc >= Main.BARRIER_WEST_X && point_1.x_loc <= Main.BARRIER_EAST_X && point_1.y_loc >= Main.BARRIER_SOUTH_Y && point_1.y_loc <= Main.BARRIER_NORTH_Y)
                     ;
-                else if (point_1.x_loc >= Main.WALL_EAST_X && (point_1.y_loc >= 7.332 || point_1.y_loc <= 6.334))
+                else if (point_1.x_loc >= Main.WALL_EAST_X && (point_1.y_loc >= Main.DOOR_NORTH_Y || point_1.y_loc <= Main.DOOR_SOUTH_Y))
                     ;
-                else if (point_1.x_loc >= 12.454)
+                else if (point_1.x_loc >= Main.WALL_EAST_X + Wall.THICKNESS)
                     return point_1.dir;
                 else {
                     Vis[((int) Math.round(point_1.y_loc / MULTIPLE)) * width + (int) Math.round(point_1.x_loc / MULTIPLE)] = true;
@@ -114,13 +122,13 @@ class Location {
             if (Vis[((int) Math.round(point_2.y_loc / MULTIPLE)) * width + (int) Math.round(point_2.x_loc / MULTIPLE)])
                 ;
             else {
-                if (point_2.x_loc <= 3.666 || point_2.y_loc >= 9.958 || point_2.y_loc <= 3.692)
+                if (point_2.x_loc <= Main.WALL_WAST_X || point_2.y_loc >= Main.WALL_NORTH_Y || point_2.y_loc <= Main.WALL_SOUTH_Y)
                     ;
-                else if (point_2.x_loc >= Main.BARRIER_WEST_X && point_2.x_loc <= Main.BARRIER_EAST_X && point_2.y_loc >= 6.89 && point_2.y_loc <= 7.488)
+                else if (point_2.x_loc >= Main.BARRIER_WEST_X && point_2.x_loc <= Main.BARRIER_EAST_X && point_2.y_loc >= Main.BARRIER_SOUTH_Y && point_2.y_loc <= Main.BARRIER_NORTH_Y)
                     ;
-                else if (point_2.x_loc >= Main.WALL_EAST_X && (point_2.y_loc >= 7.332 || point_2.y_loc <= 6.334))
+                else if (point_2.x_loc >= Main.WALL_EAST_X && (point_2.y_loc >= Main.DOOR_NORTH_Y || point_2.y_loc <= Main.DOOR_SOUTH_Y))
                     ;
-                else if (point_2.x_loc >= 12.454)
+                else if (point_2.x_loc >= Main.WALL_EAST_X + Wall.THICKNESS)
                     return point_2.dir;
                 else {
                     Vis[((int) Math.round(point_2.y_loc / MULTIPLE)) * width + (int) Math.round(point_2.x_loc / MULTIPLE)] = true;
@@ -131,13 +139,13 @@ class Location {
             if (Vis[((int) Math.round(point_3.y_loc / MULTIPLE)) * width + (int) Math.round(point_3.x_loc / MULTIPLE)])
                 ;
             else {
-                if (point_3.x_loc <= 3.666 || point_3.y_loc >= 9.958 || point_3.y_loc <= 3.692)
+                if (point_3.x_loc <= Main.WALL_WAST_X || point_3.y_loc >= Main.WALL_NORTH_Y || point_3.y_loc <= Main.WALL_SOUTH_Y)
                     ;
-                else if (point_3.x_loc >= Main.BARRIER_WEST_X && point_3.x_loc <= Main.BARRIER_EAST_X && point_3.y_loc >= 6.89 && point_3.y_loc <= 7.488)
+                else if (point_3.x_loc >= Main.BARRIER_WEST_X && point_3.x_loc <= Main.BARRIER_EAST_X && point_3.y_loc >= Main.BARRIER_SOUTH_Y && point_3.y_loc <= Main.BARRIER_NORTH_Y)
                     ;
-                else if (point_3.x_loc >= Main.WALL_EAST_X && (point_3.y_loc >= 7.332 || point_3.y_loc <= 6.334))
+                else if (point_3.x_loc >= Main.WALL_EAST_X && (point_3.y_loc >= Main.DOOR_NORTH_Y || point_3.y_loc <= Main.DOOR_SOUTH_Y))
                     ;
-                else if (point_3.x_loc >= 12.454)
+                else if (point_3.x_loc >= Main.WALL_EAST_X + Wall.THICKNESS)
                     return point_3.dir;
                 else {
                     Vis[((int) Math.round(point_3.y_loc / MULTIPLE)) * width + (int) Math.round(point_3.x_loc / MULTIPLE)] = true;
@@ -150,13 +158,13 @@ class Location {
             else {
                 if (ID == 9)
                     System.out.println("BFS test:(" + point_4.x_loc + "," + point_4.y_loc + ")");
-                if (point_4.x_loc <= 3.666 || point_4.y_loc >= 9.958 || point_4.y_loc <= 3.692)
+                if (point_4.x_loc <= Main.WALL_WAST_X || point_4.y_loc >= Main.WALL_NORTH_Y || point_4.y_loc <= Main.WALL_SOUTH_Y)
                     ;
-                else if (point_4.x_loc >= Main.BARRIER_WEST_X && point_4.x_loc <= Main.BARRIER_EAST_X && point_4.y_loc >= 6.89 && point_4.y_loc <= 7.488)
+                else if (point_4.x_loc >= Main.BARRIER_WEST_X && point_4.x_loc <= Main.BARRIER_EAST_X && point_4.y_loc >= Main.BARRIER_SOUTH_Y && point_4.y_loc <= Main.BARRIER_NORTH_Y)
                     ;
-                else if (point_4.x_loc >= Main.WALL_EAST_X && (point_4.y_loc >= 7.332 || point_4.y_loc <= 6.334))
+                else if (point_4.x_loc >= Main.WALL_EAST_X && (point_4.y_loc >= Main.DOOR_NORTH_Y || point_4.y_loc <= Main.DOOR_SOUTH_Y))
                     ;
-                else if (point_4.x_loc >= 12.454)
+                else if (point_4.x_loc >= Main.WALL_EAST_X + Wall.THICKNESS)
                     return point_4.dir;
                 else {
                     Vis[((int) Math.round(point_4.y_loc / MULTIPLE)) * width + (int) Math.round(point_4.x_loc / MULTIPLE)] = true;
@@ -166,13 +174,13 @@ class Location {
             if (Vis[((int) Math.round(point_5.y_loc / MULTIPLE)) * width + (int) Math.round(point_5.x_loc / MULTIPLE)])
                 ;
             else {
-                if (point_5.x_loc <= 3.666 || point_5.y_loc >= 9.958 || point_5.y_loc <= 3.692)
+                if (point_5.x_loc <= Main.WALL_WAST_X || point_5.y_loc >= Main.WALL_NORTH_Y || point_5.y_loc <= Main.WALL_SOUTH_Y)
                     ;
-                else if (point_5.x_loc >= Main.BARRIER_WEST_X && point_5.x_loc <= Main.BARRIER_EAST_X && point_5.y_loc >= 6.89 && point_5.y_loc <= 7.488)
+                else if (point_5.x_loc >= Main.BARRIER_WEST_X && point_5.x_loc <= Main.BARRIER_EAST_X && point_5.y_loc >= Main.BARRIER_SOUTH_Y && point_5.y_loc <= Main.BARRIER_NORTH_Y)
                     ;
-                else if (point_5.x_loc >= Main.WALL_EAST_X && (point_5.y_loc >= 7.332 || point_5.y_loc <= 6.334))
+                else if (point_5.x_loc >= Main.WALL_EAST_X && (point_5.y_loc >= Main.DOOR_NORTH_Y || point_5.y_loc <= Main.DOOR_SOUTH_Y))
                     ;
-                else if (point_5.x_loc >= 12.454)
+                else if (point_5.x_loc >= Main.WALL_EAST_X + Wall.THICKNESS)
                     return point_5.dir;
                 else {
                     Vis[((int) Math.round(point_5.y_loc / MULTIPLE)) * width + (int) Math.round(point_5.x_loc / MULTIPLE)] = true;
@@ -184,13 +192,13 @@ class Location {
             if (Vis[((int) Math.round(point_6.y_loc / MULTIPLE)) * width + (int) Math.round(point_6.x_loc / MULTIPLE)])
                 ;
             else {
-                if (point_6.x_loc <= 3.666 || point_6.y_loc >= 9.958 || point_6.y_loc <= 3.692)
+                if (point_6.x_loc <= Main.WALL_WAST_X || point_6.y_loc >= Main.WALL_NORTH_Y || point_6.y_loc <= Main.WALL_SOUTH_Y)
                     ;
-                else if (point_6.x_loc >= Main.BARRIER_WEST_X && point_6.x_loc <= Main.BARRIER_EAST_X && point_6.y_loc >= 6.89 && point_6.y_loc <= 7.488)
+                else if (point_6.x_loc >= Main.BARRIER_WEST_X && point_6.x_loc <= Main.BARRIER_EAST_X && point_6.y_loc >= Main.BARRIER_SOUTH_Y && point_6.y_loc <= Main.BARRIER_NORTH_Y)
                     ;
-                else if (point_6.x_loc >= Main.WALL_EAST_X && (point_6.y_loc >= 7.332 || point_6.y_loc <= 6.334))
+                else if (point_6.x_loc >= Main.WALL_EAST_X && (point_6.y_loc >= Main.DOOR_NORTH_Y || point_6.y_loc <= Main.DOOR_SOUTH_Y))
                     ;
-                else if (point_6.x_loc >= 12.454)
+                else if (point_6.x_loc >= Main.WALL_EAST_X + Wall.THICKNESS)
                     return point_6.dir;
                 else {
                     Vis[((int) Math.round(point_6.y_loc / MULTIPLE)) * width + (int) Math.round(point_6.x_loc / MULTIPLE)] = true;
@@ -201,13 +209,13 @@ class Location {
             if (Vis[((int) Math.round(point_7.y_loc / MULTIPLE)) * width + (int) Math.round(point_7.x_loc / MULTIPLE)])
                 ;
             else {
-                if (point_7.x_loc <= 3.666 || point_7.y_loc >= 9.958 || point_7.y_loc <= 3.692)
+                if (point_7.x_loc <= Main.WALL_WAST_X || point_7.y_loc >= Main.WALL_NORTH_Y || point_7.y_loc <= Main.WALL_SOUTH_Y)
                     ;
-                else if (point_7.x_loc >= Main.BARRIER_WEST_X && point_7.x_loc <= Main.BARRIER_EAST_X && point_7.y_loc >= 6.89 && point_7.y_loc <= 7.488)
+                else if (point_7.x_loc >= Main.BARRIER_WEST_X && point_7.x_loc <= Main.BARRIER_EAST_X && point_7.y_loc >= Main.BARRIER_SOUTH_Y && point_7.y_loc <= Main.BARRIER_NORTH_Y)
                     ;
-                else if (point_7.x_loc >= Main.WALL_EAST_X && (point_7.y_loc >= 7.332 || point_7.y_loc <= 6.334))
+                else if (point_7.x_loc >= Main.WALL_EAST_X && (point_7.y_loc >= Main.DOOR_NORTH_Y || point_7.y_loc <= Main.DOOR_SOUTH_Y))
                     ;
-                else if (point_7.x_loc >= 12.454)
+                else if (point_7.x_loc >= Main.WALL_EAST_X + Wall.THICKNESS)
                     return point_7.dir;
                 else {
                     Vis[((int) Math.round(point_7.y_loc / MULTIPLE)) * width + (int) Math.round(point_7.x_loc / MULTIPLE)] = true;
@@ -220,13 +228,13 @@ class Location {
             else {
                 if (ID == 9)
                     System.out.println("BFS test:(" + point_8.x_loc + "," + point_8.y_loc + ")");
-                if (point_8.x_loc <= 3.666 || point_8.y_loc >= 9.958 || point_8.y_loc <= 3.692)
+                if (point_8.x_loc <= Main.WALL_WAST_X || point_8.y_loc >= Main.WALL_NORTH_Y || point_8.y_loc <= Main.WALL_SOUTH_Y)
                     ;
-                else if (point_8.x_loc >= Main.BARRIER_WEST_X && point_8.x_loc <= Main.BARRIER_EAST_X && point_8.y_loc >= 6.89 && point_8.y_loc <= 7.488)
+                else if (point_8.x_loc >= Main.BARRIER_WEST_X && point_8.x_loc <= Main.BARRIER_EAST_X && point_8.y_loc >= Main.BARRIER_SOUTH_Y && point_8.y_loc <= Main.BARRIER_NORTH_Y)
                     ;
-                else if (point_8.x_loc >= Main.WALL_EAST_X && (point_8.y_loc >= 7.332 || point_8.y_loc <= 6.334))
+                else if (point_8.x_loc >= Main.WALL_EAST_X && (point_8.y_loc >= Main.DOOR_NORTH_Y || point_8.y_loc <= Main.DOOR_SOUTH_Y))
                     ;
-                else if (point_8.x_loc >= 12.454)
+                else if (point_8.x_loc >= Main.WALL_EAST_X + Wall.THICKNESS)
                     return point_8.dir;
                 else {
                     Vis[((int) Math.round(point_8.y_loc / MULTIPLE)) * width + (int) Math.round(point_8.x_loc / MULTIPLE)] = true;

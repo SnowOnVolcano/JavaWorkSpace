@@ -6,7 +6,7 @@ import java.io.FileOutputStream;
 import java.io.PrintStream;
 
 public class Main {
-    static int HUMAN_SUM = 50;              //总人数
+    static int HUMAN_SUM = 100;              //总人数
     static double WALL_WAST_X = 3.66;       //西侧墙的横坐标
     static double WALL_EAST_X = 11.96;      //东侧墙的横坐标
     static double WALL_SOUTH_Y = 3.689;     //南侧墙的纵坐标

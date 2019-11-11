@@ -2,19 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a8ffa396-284b-4144-b8ad-cbc98934cc02" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hwk_2_GUI.py" beforeDir="false" afterPath="$PROJECT_DIR$/hwk_2_GUI.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Simulation_Escape/social_force/Direction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Simulation_Escape/social_force/Direction.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Simulation_Escape/social_force/Force.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Simulation_Escape/social_force/Force.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Simulation_Escape/social_force/Human.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Simulation_Escape/social_force/Human.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Simulation_Escape/social_force/Location.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Simulation_Escape/social_force/Location.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Simulation_Escape/social_force/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Simulation_Escape/social_force/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Simulation_Escape/social_force/Wall.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Simulation_Escape/social_force/Wall.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/social_force/Direction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/social_force/Direction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/social_force/Force.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/social_force/Force.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/social_force/Human.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/social_force/Human.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/social_force/Location.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/social_force/Location.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/social_force/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/social_force/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/social_force/Wall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/social_force/Wall.java" afterDir="false" />
@@ -93,7 +86,7 @@
       <option name="presentableId" value="Default" />
       <updated>1573216849291</updated>
       <workItem from="1573216852380" duration="2612000" />
-      <workItem from="1573458742827" duration="8322000" />
+      <workItem from="1573458742827" duration="12128000" />
     </task>
     <servers />
   </component>

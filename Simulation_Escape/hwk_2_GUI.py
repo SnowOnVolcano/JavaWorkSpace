@@ -27,7 +27,8 @@ def move_y(end_y, begin_y):
     return end_y - begin_y
 
 
-HUMAN_SUM = 50  # 总人数
+HUMAN_SUM = 100  # 总人数
+THICKNESS = 0.48  # 墻的厚度
 WALL_WAST_X = 3.66  # 西侧墙的横坐标
 WALL_EAST_X = 11.96  # 东侧墙的横坐标
 WALL_SOUTH_Y = 3.689  # 南侧墙的纵坐标
@@ -54,11 +55,11 @@ r = 5
 
 canvas.create_rectangle(BARRIER_WEST_X * ratio, BARRIER_NORTH_Y * ratio, BARRIER_EAST_X * ratio,
                         BARRIER_SOUTH_Y * ratio, fill='black')
-canvas.create_rectangle(3.18 * ratio, 10.457 * ratio, WALL_WAST_X * ratio, 3.209 * ratio, fill='black')
-canvas.create_rectangle(3.18 * ratio, 10.457 * ratio, 12.44 * ratio, 9.997 * ratio, fill='black')
-canvas.create_rectangle(WALL_EAST_X * ratio, WALL_NORTH_Y * ratio, 12.44 * ratio, DOOR_NORTH_Y * ratio, fill='black')
-canvas.create_rectangle(WALL_EAST_X * ratio, DOOR_SOUTH_Y * ratio, 12.44 * ratio, 3.209 * ratio, fill='black')
-canvas.create_rectangle(3.18 * ratio, 3.698 * ratio, 12.44 * ratio, 3.209 * ratio, fill='black')
+canvas.create_rectangle((WALL_WAST_X - THICKNESS) * ratio, (WALL_NORTH_Y + THICKNESS) * ratio, WALL_WAST_X * ratio, (WALL_SOUTH_Y - THICKNESS) * ratio, fill='black')
+canvas.create_rectangle((WALL_WAST_X - THICKNESS) * ratio, (WALL_NORTH_Y + THICKNESS) * ratio, (WALL_EAST_X + THICKNESS) * ratio, WALL_NORTH_Y * ratio, fill='black')
+canvas.create_rectangle(WALL_EAST_X * ratio, WALL_NORTH_Y * ratio, (WALL_EAST_X + THICKNESS) * ratio, DOOR_NORTH_Y * ratio, fill='black')
+canvas.create_rectangle(WALL_EAST_X * ratio, DOOR_SOUTH_Y * ratio, (WALL_EAST_X + THICKNESS) * ratio, (WALL_SOUTH_Y - THICKNESS) * ratio, fill='black')
+canvas.create_rectangle((WALL_WAST_X - THICKNESS) * ratio, WALL_SOUTH_Y * ratio, (WALL_EAST_X + THICKNESS) * ratio, (WALL_SOUTH_Y - THICKNESS) * ratio, fill='black')
 
 canvas.pack()
 
@@ -73,7 +74,7 @@ for i in range(HUMAN_SUM):
 
 for i in range(399):
     for j in range(HUMAN_SUM):
-        if fm[i + 400 * j + 1][0] >= 12.44:
+        if fm[i + 400 * j + 1][0] >= (WALL_EAST_X + THICKNESS):
             canvas.delete(oval_list[j])
         else:
             canvas.move(oval_list[j], move_x(fm[i + 400 * j + 1][0] * ratio, fm[i + 400 * j][0] * ratio),
